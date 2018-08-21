@@ -1,0 +1,11 @@
+Matrix m = new Matrix();
+m.RotateAt((float)MathFuncs.RadiansToDegrees(Lander.Rotation), Lander.Location);
+g.Transform = m; //assigning the matrix to Graphics object
+g.DrawImage(Lander.Sprite, Lander.LocationGraphics);
+m.Reset();
+g.Transform = m; //restore original matrix
+sY += Gravity * ts.TotalSeconds;
+sY -= Math.Sin(MathFuncs.NormalizeAngle(Rotation + Math.PI / 2)) 
+	* totalSeconds * ThrustSpeed;
+sX -= Math.Cos(MathFuncs.NormalizeAngle(Rotation + Math.PI / 2)) 
+	* totalSeconds * ThrustSpeed;
